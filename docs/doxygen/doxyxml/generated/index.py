@@ -4,13 +4,12 @@
 Generated Mon Feb  9 19:08:05 2009 by generateDS.py.
 """
 
-from xml.dom import minidom
-
 import os
 import sys
 import compound
 
 import indexsuper as supermod
+import defusedxml.minidom
 
 class DoxygenTypeSub(supermod.DoxygenType):
     def __init__(self, version=None, compound=None):
@@ -68,7 +67,7 @@ supermod.MemberType.subclass = MemberTypeSub
 
 def parse(inFilename):
 
-    doc = minidom.parse(inFilename)
+    doc = defusedxml.minidom.parse(inFilename)
     rootNode = doc.documentElement
     rootObj = supermod.DoxygenType.factory()
     rootObj.build(rootNode)

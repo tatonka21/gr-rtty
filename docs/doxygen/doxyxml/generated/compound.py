@@ -5,13 +5,13 @@ Generated Mon Feb  9 19:08:05 2009 by generateDS.py.
 """
 
 from string import lower as str_lower
-from xml.dom import minidom
 from xml.dom import Node
 
 import sys
 
 import compoundsuper as supermod
 from compoundsuper import MixedContainer
+import defusedxml.minidom
 
 
 class DoxygenTypeSub(supermod.DoxygenType):
@@ -494,7 +494,7 @@ supermod.docParaType.subclass = docParaTypeSub
 
 
 def parse(inFilename):
-    doc = minidom.parse(inFilename)
+    doc = defusedxml.minidom.parse(inFilename)
     rootNode = doc.documentElement
     rootObj = supermod.DoxygenType.factory()
     rootObj.build(rootNode)
