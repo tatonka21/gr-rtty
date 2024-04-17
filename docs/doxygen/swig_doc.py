@@ -196,7 +196,7 @@ def make_swig_interface_file(di, swigdocfilename, custom_output=None):
 
     # Create docstrings for the blocks.
     blocks = di.in_category(Block)
-    make_funcs = set([])
+    make_funcs = set()
     for block in blocks:
         try:
             make_func = di.get_member(make_name(block.name()), DoxyFunction)
